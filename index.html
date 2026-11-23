@@ -25,12 +25,33 @@
     <span class="intro-hint">TAP THE SEAL TO OPEN</span>
   </section>
   <div class="announcement"><span>✧</span> A little note from our hearts <span>✧</span></div>
-  <audio id="wedding-audio" src="asset/Christian%20Wedding%20Song%20-%20One%20Love%2C%20One%20Promise.mp3" preload="auto" loop></audio>
+  <audio id="wedding-audio" src="asset/Christian%20Wedding%20Song%20-%20One%20Love%2C%20One%20Promise.mp3" preload="none" loop></audio>
   <button class="audio-toggle" id="audio-toggle" type="button" aria-label="Mute wedding music" aria-pressed="false" title="Mute wedding music">
     <svg class="headphone-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 13v-1a9 9 0 0 1 18 0v1M3 13v5a2 2 0 0 0 2 2h2v-8H5a2 2 0 0 0-2 2Zm18 0v5a2 2 0 0 1-2 2h-2v-8h2a2 2 0 0 1 2 2Z"/></svg>
     <svg class="mute-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="m4 4 16 16"/></svg>
   </button>
   <span class="sr-only" id="audio-status" aria-live="polite"></span>
+  <svg class="ring-defs" width="0" height="0" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#fff3c4"/><stop offset=".22" stop-color="#d9a93f"/>
+        <stop offset=".45" stop-color="#fbe08f"/><stop offset=".68" stop-color="#b07a22"/>
+        <stop offset="1" stop-color="#f3d27a"/>
+      </linearGradient>
+      <g id="ring-shape">
+        <circle cx="50" cy="50" r="40" fill="none" stroke="#7a521a" stroke-opacity=".55" stroke-width="10.5"/>
+        <circle cx="50" cy="50" r="40" fill="none" stroke="url(#gold)" stroke-width="8"/>
+        <circle cx="50" cy="50" r="43.2" fill="none" stroke="#fff6d6" stroke-opacity=".7" stroke-width=".9"/>
+        <circle cx="50" cy="50" r="36.6" fill="none" stroke="#8a5d1c" stroke-opacity=".5" stroke-width=".9"/>
+      </g>
+      <g id="ring-stone">
+        <path d="M50 3 l6 6 -6 7 -6 -7z" fill="#fdfbff" stroke="#c9b8d8" stroke-width=".8"/>
+        <path d="M44 9 h12 M50 3 v13" stroke="#d8cce6" stroke-width=".5"/>
+      </g>
+    </defs>
+  </svg>
+  <div class="float-ring float-ring-left" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#ring-shape"/><use href="#ring-stone"/></svg></div>
+  <div class="float-ring float-ring-right" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#ring-shape"/></svg></div>
   <header class="hero" id="home">
     <div class="hero-frame">
       <div class="hero-copy">
@@ -74,21 +95,11 @@
           <canvas id="scratch-canvas" aria-label="Scratch to reveal the wedding date. You can also tap to reveal it." tabindex="0"></canvas>
         </div>
         <button type="button" class="reveal-button" id="reveal-date">Tap to reveal instead</button>
-        <div class="countdown countdown-reveal" id="countdown" aria-label="Countdown to the wedding" hidden><span>COUNTING DOWN TO “I DO”</span><div class="count-grid"><div><b id="days">—</b><small>DAYS</small></div><div><b id="hours">—</b><small>HOURS</small></div><div><b id="minutes">—</b><small>MINUTES</small></div><div><b id="seconds">—</b><small>SECONDS</small></div></div></div>
+        <div class="countdown countdown-reveal" id="countdown" aria-label="Countdown to the wedding" hidden><span id="countdown-label">COUNTING DOWN TO “I DO”</span><div class="count-grid"><div><b id="days">—</b><small>DAYS</small></div><div><b id="hours">—</b><small>HOURS</small></div><div><b id="minutes">—</b><small>MINUTES</small></div><div><b id="seconds">—</b><small>SECONDS</small></div></div></div>
         <p class="script scratch-signoff">We can't wait to see you there</p>
       </div>
     </section>
 
-    <section class="rings-journey" aria-labelledby="rings-heading">
-      <p class="eyebrow">TWO LIVES, ONE PROMISE</p>
-      <h2 id="rings-heading">Joined in love</h2>
-      <div class="ring-stage" aria-label="Two wedding rings float together">
-        <span class="floating-ring floating-ring-left" aria-hidden="true"></span>
-        <span class="floating-ring floating-ring-right" aria-hidden="true"></span>
-        <img class="joined-rings" src="asset/ring.jpeg" alt="Our joined gold wedding rings">
-      </div>
-      <p class="ring-caption">A promise for a lifetime</p>
-    </section>
 
     <section class="details section" id="details">
       <p class="eyebrow">THE DAY WE'VE BEEN DREAMING OF</p>
@@ -108,7 +119,24 @@
         </article>
       </div>
     </section>
-
+    <section class="rings-journey" id="rings" aria-labelledby="rings-heading">
+      <p class="eyebrow">TWO LIVES, ONE PROMISE</p>
+      <h2 id="rings-heading">Joined in love</h2>
+      <div class="ring-slot" id="ring-slot" aria-hidden="true">
+        <svg class="joined-svg" viewBox="0 0 160 100">
+          <defs><clipPath id="ring-crossing"><rect x="62" y="60" width="36" height="34"/></clipPath></defs>
+          <use href="#ring-shape" x="0" y="0"/>
+          <use href="#ring-shape" x="60" y="0"/>
+          <g clip-path="url(#ring-crossing)"><use href="#ring-shape" x="0" y="0"/></g>
+          <use href="#ring-stone" x="0" y="0"/>
+        </svg>
+        <span class="sparkle s1">✦</span><span class="sparkle s2">✧</span><span class="sparkle s3">✦</span><span class="sparkle s4">✧</span>
+      </div>
+      <figure class="ring-photo">
+        <img src="asset/ring.jpeg" alt="Our engraved gold wedding rings" loading="lazy">
+        <figcaption class="ring-caption">A promise for a lifetime</figcaption>
+      </figure>
+    </section>
   </main>
 
   <footer><span class="cross">✝</span><p class="script">With love and gratitude</p><p class="footer-names">OLIVIA &amp; NOAH</p><small>OCTOBER 17, 2026 · PORTLAND, OREGON</small><a href="#home">BACK TO TOP ↑</a></footer>
